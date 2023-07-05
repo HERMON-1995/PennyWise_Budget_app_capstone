@@ -1,0 +1,5 @@
+<%= link_to category_path(category), class: "custom-link" do %>
+  <i class="<%= category.icon %>"></i>
+  <%= content_tag :p, category.name, class: "custom-name" %>
+  <%= content_tag :p, number_to_currency(category.total_expenses), class: "custom-expenses" %>
+<% end %>
