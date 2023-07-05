@@ -1,0 +1,27 @@
+  <%= form_with(model: expense, url: category_expenses_path(@category), local: true, class: "category-page") do |form| %>
+    <%= content_tag :div, class: "field" do %>
+      <%= form.label :name, class: "label" %>
+      <%= form.text_field :name, required: true, class: "input expense-form" %>
+    <% end %>
+    <%= content_tag :div, class: "field" do %>
+      <%= form.label :amount %>
+      <%= form.number_field :amount, required: true, class: "input expense-form" %>
+    <% end %>
+    <%= content_tag :div, class: "checkboxes" do %>
+      <%= form.label :category_id %>
+      <%= form.collection_check_boxes :category_ids, @user_categories, :id, :name do |category| %>
+        <%= category.label do %>
+          <% if category.object.id == @category.id %>
+            <%= category.check_box(checked: true) %>
+          <% else %>
+            <%= category.check_box %>
+          <% end %>
+          <%= category.text %>
+        <% end %>
+      <% end %>
+    <% end %>
+    <%= content_tag :div do %>
+      <%= form.submit "Create Transaction", class: "button-expence" %>
+    <% end %>
+  <% end %>
+
