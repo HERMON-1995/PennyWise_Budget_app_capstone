@@ -1,0 +1,38 @@
+<% if user_signed_in? %>
+  <%= content_tag :nav, class: "custom-nav" do %>
+    <%= content_tag :div, class: "custom-nav-content" do %>
+      <% if current_page?(categories_path) %>
+        <%= content_tag :button, id: "hamburger-btn", class: "custom-popup-toggle", type: "button" do %>
+          <%= content_tag :i, "", class: "fa fa-bars fa-3x hamburger" %>
+        <% end %>
+        <%= content_tag :h2, "CATEGORIES" %>
+        <%= content_tag :i, "", class: "fa fa-search fa-lg search" %>
+
+        <%= content_tag :div, id: "popup", class: "hidden custom-popup" do %>
+          <%= link_to "#", class: "custom-popup-close" do %>
+            <%= content_tag :i, "", class: "fa fa-times home-menu" %>
+          <% end %>
+          <ul>
+            <li><%= link_to "Home", root_path, class: "home-menu" %></li>
+            <li><%= button_to "Log out", destroy_user_session_path, method: :delete %></li>
+          </ul>
+        <% end %>
+      <% end %>
+    <% end %>
+    <%= content_tag :div, class: "custom-nav-bottom" do %>
+      <%= link_to "Most Recent", "#", class: "custom-nav-link" %>
+      <%= link_to "Most Ancient", "#", class: "custom-nav-link" %>
+    <% end %>
+  <% end %>
+<% end %>
+
+<section class="custom-section">
+  <ul class="custom-list">
+    <% @categories.each do |category| %>
+      <li class="custom-list-item">
+        <%= render partial: "categories/category", locals: { category: category } %>
+      </li>
+    <% end %>
+  </ul>
+  <%= link_to "New Category", new_category_path, class: "custom-button" %>
+</section>
