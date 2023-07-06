@@ -3,10 +3,10 @@
       <%= "categories" %>
     <% else %>
       <%= content_tag :div, class: "custom-flex-container" do %>
+        <%= content_tag :h1, "Welcome to PennyWise", class: "Welcome"%>
         <%= content_tag :div, class: "custom-absolute-container" do %>
-          <%= content_tag :h1, "Welcome to PennyWise", class: "Welcome"%>
-          <%= button_to "Log in", new_user_session_path, method: :get, class: "custom-button" %>
-          <%= button_to "Sign up", new_user_registration_path, method: :get, class: "custom-button" %>
+          <div><%= button_to "Log in", new_user_session_path, method: :get, class: "auth-button login-btn" %>
+          <%= button_to "Sign up", new_user_registration_path, method: :get, class: "auth-button signup" %>
         <% end %>
       <% end %>
     <% end %>

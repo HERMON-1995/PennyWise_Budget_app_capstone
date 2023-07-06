@@ -3,14 +3,26 @@
     <%= content_tag :div, class: "custom-nav-content" do %>
 
       <% if current_page?(category_expenses_path) %>
-        <%= link_to('<i class="fa fa-angle-left left-arrow"></i>'.html_safe, categories_path) %>
+      <%= content_tag :button, id: "hamburger-btn", class: "custom-popup-toggle", type: "button" do %>
+        <%= content_tag :i, "", class: "fa fa-bars fa-2x hamburger" %>
+      <% end %>
         <%= content_tag :h2, "TRANSACTIONS" %>
-        <%= content_tag :i, "", class: "fa fa-search fa-lg search" %>
+        <%= content_tag :i, "", class: "fa fa-search fa-1x search" %>
+
+        <%= content_tag :div, id: "popup", class: "hidden custom-popup" do %>
+          <%= link_to "#", class: "custom-popup-close" do %>
+            <%= content_tag :i, "", class: "fa fa-times home-menu" %>
+          <% end %>
+          <ul>
+            <li><%= link_to "Home", root_path, class: "home-menu" %></li>
+            <li><%= button_to "Log out", destroy_user_session_path, method: :delete %></li>
+          </ul>
+        <% end %>
         <% end %>
       <% end %>
       <%= content_tag :div, class: "custom-nav-bottom" do %>
-        <%= link_to "Most Recent", "#", class: "custom-nav-link" %>
-        <%= link_to "Most Ancient", "#", class: "custom-nav-link" %>
+        <%= link_to "Most recent", "#", class: "custom-nav-link" %>
+        <%= link_to "Most ancient", "#", class: "custom-nav-link ancient" %>
     <% end %>
     <% end %>
 <% end %>
@@ -25,12 +37,12 @@
     <% @expenses.each do |expense| %>
       <%= content_tag :li, class: "custom-item" do %>
         <%= link_to category_expense_path(@category, expense), class: "custom-link" do %>
-          <%= content_tag :i, "", class: "#{@category.icon} custom-icon" %>
+          <%= content_tag :i, "", class: "#{@category.icon} custom-icon fa-3x" %>
           <%= content_tag :p, expense.name, class: "custom-name" %>
           <%= content_tag :p, number_to_currency(expense.amount), class: "custom-amount" %>
         <% end %>
       <% end %>
     <% end %>
   </ul>
-  <%= link_to "Add a new transaction", new_category_expense_path(@category), class: "custom-button" %>
+  <div class="button-div"><%= link_to "Add a new transaction", new_category_expense_path(@category), class: "custom-button" %></div>
 </section>

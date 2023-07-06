@@ -1,5 +1,5 @@
 <%= link_to category_path(category), class: "custom-link" do %>
-  <%= content_tag :i, "", class: "#{category.icon}" %>
+  <%= content_tag :i, "", class: "#{category.icon} fa-3x" %>
   <%= content_tag :p, category.name, class: "custom-name" %>
   <%= content_tag :p, number_to_currency(category.total_expenses), class: "custom-expenses" %>
 <% end %>

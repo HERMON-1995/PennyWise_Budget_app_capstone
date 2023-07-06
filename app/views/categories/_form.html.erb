@@ -9,7 +9,7 @@
   <%= form.select :icon, Category::ICONS, { include_blank: true }, { required: true, class: 'input' } %>
   <%= content_tag(:i, "", class: "selected-icon") %>
   <% end %>
-  <%= content_tag :div, class: "actions" do %>
+  <%= content_tag :div, class: "button-div create-cat-div" do %>
     <%= form.submit "Create Category", class: "custom-button" %>
   <% end %>
 <% end %>

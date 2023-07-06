@@ -5,12 +5,12 @@
       <% if current_page?(new_category_path)%>
         <%= link_to('<i class="fa fa-angle-left left-arrow"></i>'.html_safe, categories_path) %>
         <%= content_tag :h2, "CATEGORY" %>
-        <%= content_tag :i, "", class: "fa fa-search fa-lg search" %>
+        <%= content_tag :i, "", class: "fa fa-search fa-1x search" %>
         <% end %>
       <% end %>
       <%= content_tag :div, class: "custom-nav-bottom" do %>
-        <%= link_to "Most Recent", "#", class: "custom-nav-link" %>
-        <%= link_to "Most Ancient", "#", class: "custom-nav-link" %>
+        <%= link_to "Most recent", "#", class: "custom-nav-link" %>
+        <%= link_to "Most ancient", "#", class: "custom-nav-link ancient" %>
     <% end %>
     <% end %>
     <% end %>

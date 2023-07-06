@@ -3,10 +3,10 @@
     <%= content_tag :div, class: "custom-nav-content" do %>
       <% if current_page?(categories_path) %>
         <%= content_tag :button, id: "hamburger-btn", class: "custom-popup-toggle", type: "button" do %>
-          <%= content_tag :i, "", class: "fa fa-bars fa-3x hamburger" %>
+          <%= content_tag :i, "", class: "fa fa-bars fa-2x hamburger" %>
         <% end %>
         <%= content_tag :h2, "CATEGORIES" %>
-        <%= content_tag :i, "", class: "fa fa-search fa-lg search" %>
+        <%= content_tag :i, "", class: "fa fa-search fa-1x search" %>
 
         <%= content_tag :div, id: "popup", class: "hidden custom-popup" do %>
           <%= link_to "#", class: "custom-popup-close" do %>
@@ -20,8 +20,8 @@
       <% end %>
     <% end %>
     <%= content_tag :div, class: "custom-nav-bottom" do %>
-      <%= link_to "Most Recent", "#", class: "custom-nav-link" %>
-      <%= link_to "Most Ancient", "#", class: "custom-nav-link" %>
+      <%= link_to "Most recent", "#", class: "custom-nav-link" %>
+      <%= link_to "Most ancient", "#", class: "custom-nav-link ancient" %>
     <% end %>
   <% end %>
 <% end %>
@@ -34,5 +34,5 @@
       </li>
     <% end %>
   </ul>
-  <%= link_to "New Category", new_category_path, class: "custom-button" %>
+  <div class="button-div"><%= link_to "New Category", new_category_path, class: "custom-button" %></div>
 </section>
