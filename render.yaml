@@ -1,0 +1,18 @@
+databases:
+  - name: pennywiseapp
+    databaseName: pennywiseapp
+    user: pennywiseapp_user
+
+services:
+  - type: web
+    name: pennywisebudgetapp
+    runtime: ruby
+    buildCommand: "./bin/render-build.sh"
+    startCommand: "bundle exec puma -C config/puma.rb"
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: pennywiseapp
+          property: connectionString
+      - key: RAILS_MASTER_KEY
+        sync: false
