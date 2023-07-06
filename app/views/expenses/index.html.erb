@@ -1,0 +1,36 @@
+<% if user_signed_in? %>
+  <%= content_tag :nav, class: "custom-nav" do %>
+    <%= content_tag :div, class: "custom-nav-content" do %>
+
+      <% if current_page?(category_expenses_path) %>
+        <%= link_to('<i class="fa fa-angle-left left-arrow"></i>'.html_safe, categories_path) %>
+        <%= content_tag :h2, "TRANSACTIONS" %>
+        <%= content_tag :i, "", class: "fa fa-search fa-lg search" %>
+        <% end %>
+      <% end %>
+      <%= content_tag :div, class: "custom-nav-bottom" do %>
+        <%= link_to "Most Recent", "#", class: "custom-nav-link" %>
+        <%= link_to "Most Ancient", "#", class: "custom-nav-link" %>
+    <% end %>
+    <% end %>
+<% end %>
+
+<section class="custom-section">
+<%= content_tag :div, class: "custom-header" do %>
+  <div><%= @category.name %></div>
+  <div><%= "Total Transaction - #{number_to_currency(@category.total_expenses)}" %></div>
+<% end %>
+
+  <ul>
+    <% @expenses.each do |expense| %>
+      <%= content_tag :li, class: "custom-item" do %>
+        <%= link_to category_expense_path(@category, expense), class: "custom-link" do %>
+          <%= content_tag :i, "", class: "#{@category.icon} custom-icon" %>
+          <%= content_tag :p, expense.name, class: "custom-name" %>
+          <%= content_tag :p, number_to_currency(expense.amount), class: "custom-amount" %>
+        <% end %>
+      <% end %>
+    <% end %>
+  </ul>
+  <%= link_to "Add a new transaction", new_category_expense_path(@category), class: "custom-button" %>
+</section>

@@ -1,0 +1,20 @@
+<% if user_signed_in? %>
+  <%= content_tag :nav, class: "custom-nav" do %>
+    <%= content_tag :div, class: "custom-nav-content" do %>
+      <% if current_page?(new_category_expense_path) %>
+        <%= link_to('<i class="fa fa-angle-left left-arrow"></i>'.html_safe, category_expenses_path) %>
+        <%= content_tag :h2, "TRANSACTIONS" %>
+        <%= content_tag :i, "", class: "fa fa-search fa-lg search" %>
+      <% end %>
+    <% end %>
+    <%= content_tag :div, class: "custom-nav-bottom" do %>
+      <%= link_to "Most Recent", "#", class: "custom-nav-link" %>
+      <%= link_to "Most Ancient", "#", class: "custom-nav-link" %>
+  <% end %>
+  <% end %>
+<% end %>
+
+<%= content_tag :section, class: "expense-section" do %>
+  <%= content_tag :h1, "New Transaction", class: "expense-heading" %>
+  <%= render "form", expense: @expense %>
+<% end %>
