@@ -114,7 +114,7 @@ To run tests, run the following command:
 
 ### Deployment
 
-  - [N/A]
+  - [See live here](https://pennywise-budget-app-kyxd.onrender.com)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
