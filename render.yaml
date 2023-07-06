@@ -1,6 +1,6 @@
 databases:
   - name: Budget_app_capstone
-    databaseName: Budget_app_development
+    databaseName: budget_app_development
     user: postgres
 
 services:
