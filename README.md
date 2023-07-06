@@ -1,4 +1,4 @@
-# Budget app
+# PennyWise Budget app
 
 <a name="readme-top"></a>
 
@@ -25,9 +25,9 @@
 
 <!-- PROJECT DESCRIPTION -->
 
-# 📖 [Budget app] <a name="about-project"></a>
+# 📖 [PennyWise Budget app] <a name="about-project"></a>
 
-**[Budget app]** is a a mobile web application where users can manage their budgets and have a list of transactions associated with a category, so that they can see how much money they spent and on what.
+**[PennyWise Budget app]** is a a mobile web application where users can manage their budgets and have a list of transactions associated with a category, so that they can see how much money they spent and on what.
 
 ## 🛠 Built With <a name="built-with"></a>
 
@@ -68,8 +68,8 @@ In order to run this project you need:
 Clone this repository to your desired folder:
 
 ```sh
-  cd Budget app
-  git clone https://github.com/HERMON-1995/Budget_app_capstone.git
+  cd PennyWise_Budget_app_capstone
+  git clone https://github.com/HERMON-1995/PennyWise_Budget_app_capstone.git
 ```
 
 ### Install
@@ -77,7 +77,7 @@ Clone this repository to your desired folder:
 Install this project with:
 
 ```sh
-  cd Budget app
+  cd PennyWise_Budget_app_capstone
   bundle install
 ```
 ```sh
@@ -144,7 +144,7 @@ To run tests, run the following command:
 
 Contributions, issues, and feature requests are welcome!
 
-Feel free to check the [issues page](https://github.com/HERMON-1995/Budget_app_capstone/issues).
+Feel free to check the [issues page](https://github.com/HERMON-1995/PennyWise_Budget_app_capstone/issues).
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
