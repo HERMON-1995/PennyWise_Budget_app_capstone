@@ -29,6 +29,8 @@
 
 **[PennyWise Budget app]** is a a mobile web application where users can manage their budgets and have a list of transactions associated with a category, so that they can see how much money they spent and on what.
 
+## Here is short introduction about the app [PennyWise Budget app](https://www.loom.com/share/4bcc5acaa9164995b21dc85b97fd4511)
+
 ## 🛠 Built With <a name="built-with"></a>
 
 ### Tech Stack <a name="tech-stack"></a>
