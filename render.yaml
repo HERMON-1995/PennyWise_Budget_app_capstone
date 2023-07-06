@@ -1,0 +1,18 @@
+databases:
+  - name: Budget_app_capstone
+    databaseName: Budget_app_development
+    user: postgres
+
+services:
+  - type: web
+    name: Budget_app_capstone
+    runtime: ruby
+    buildCommand: "./bin/render-build.sh"
+    startCommand: "bundle exec puma -C config/puma.rb"
+    envVars:
+      - key: postgres://postgres:Grahhs1995family@localhost:5432/Budget_app_development
+        fromDatabase:
+          name: Budget_app_capstone
+          property: connectionString
+      - key: d336b5c8b82380babca210bbfd0abf32
+        sync: false
