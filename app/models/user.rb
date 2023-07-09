@@ -1,6 +1,4 @@
 class User < ApplicationRecord
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :confirmable
 
@@ -17,30 +15,34 @@ class User < ApplicationRecord
   end
 
   def user_categories
-    categories.where.not(name: "dummy-categrory-#{id}")
+    categories.where.not(name: "dummy-category-#{id}")
   end
 
-  # create a dummy category then create dummy expense with that category
   def dummy_data(user)
-    category =
-      Category.new(
-        name: "dummy-categrory-#{user.id}",
-        icon: 'fa-solid fa-utensils'
-      )
-    category.save
-    expense =
-      Expense.new(
-        name: "dummy-expense-#{user.id}",
-        amount: 0,
-        author_id: user.id,
-        category_ids: [category.id]
-      )
-    expense.save
+    category = find_or_create_dummy_category(user)
+    create_dummy_expense(user, category)
   end
 
-  # check if dummy category and dummy expense exist
   def dummy_data?(id)
-    categories.find_by(name: "dummy-categrory-#{id}") &&
-      expenses.find_by(name: "dummy-expense-#{id}")
+    categories.exists?(name: "dummy-category-#{id}") &&
+      expenses.exists?(name: "dummy-expense-#{id}")
+  end
+
+  private
+
+  def find_or_create_dummy_category(user)
+    Category.find_or_create_by(
+      name: "dummy-category-#{user.id}",
+      icon: 'fa-solid fa-utensils'
+    )
+  end
+
+  def create_dummy_expense(user, category)
+    Expense.create(
+      name: "dummy-expense-#{user.id}",
+      amount: 0,
+      author_id: user.id,
+      category_ids: [category.id]
+    )
   end
 end

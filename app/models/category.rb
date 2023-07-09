@@ -1,8 +1,8 @@
 class Category < ApplicationRecord
-  has_many :category_expenses
+  has_many :category_expenses, dependent: :destroy
   has_many :expenses, through: :category_expenses
 
-  validates :name, presence: true, length: { minimum: 1, maximum: 20 }
+  validates :name, presence: true, length: { in: 1..20 }
   validates :icon, presence: true
 
   ICONS = [
@@ -19,9 +19,7 @@ class Category < ApplicationRecord
     expenses.sum(:amount)
   end
 
-  def category_expenses(current_user)
-    expenses
-      .where.not(name: "dummy-expense-#{current_user.id}")
-      .order(created_at: :desc)
+  def non_dummy_expenses(current_user)
+    expenses.where.not(name: "dummy-expense-#{current_user.id}").order(created_at: :desc)
   end
 end
