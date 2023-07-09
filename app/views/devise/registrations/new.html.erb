@@ -8,37 +8,37 @@
   <% end %>
 <% end %>
 
-<div class="authentication-pages">
+<%= content_tag :div, class: "authentication-pages" do %>
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
     <%= render "devise/shared/error_messages", resource: resource %>
 
-    <div class="field">
+    <%= content_tag :div, class: "field" do %>
       <%= f.label :name %><br />
       <%= f.text_field :name, autofocus: true, class: "input" %>
-    </div>
+    <% end %>
 
-    <div class="field">
+    <%= content_tag :div, class: "field" do %>
       <%= f.label :email %><br />
       <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "input" %>
-    </div>
+    <% end %>
 
-    <div class="field">
+    <%= content_tag :div, class: "field" do %>
       <%= f.label :password %>
       <% if @minimum_password_length %>
-        <em>(<%= @minimum_password_length %> characters minimum)</em>
+        <%= content_tag :em, "(#{@minimum_password_length} characters minimum)" %>
       <% end %><br />
       <%= f.password_field :password, autocomplete: "new-password", class: "input" %>
-    </div>
+    <% end %>
 
-    <div class="field">
+    <%= content_tag :div, class: "field" do %>
       <%= f.label :password_confirmation %><br />
       <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "input" %>
-    </div>
+    <% end %>
 
-    <div class="actions">
+    <%= content_tag :div, class: "actions" do %>
       <%= f.submit "Sign up", class: "custom-button" %>
-    </div>
+    <% end %>
   <% end %>
 
   <%= render "devise/shared/links" %>
-</div>
+<% end %>
