@@ -1,12 +1,12 @@
 class CategoriesController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_category, only: [:show]
 
   def index
     @categories = current_user.user_categories
   end
 
   def show
-    @category = Category.find(params[:id])
     redirect_to category_expenses_path(@category)
   end
 
@@ -16,10 +16,10 @@ class CategoriesController < ApplicationController
 
   def create
     current_user.dummy_data(current_user) unless current_user.dummy_data?(current_user.id)
-    new_category = Category.new(category_params)
-    if new_category.save
-      current_user.expenses.find_by(name: "dummy-expense-#{current_user.id}").categories << new_category
-      @category = new_category
+    @category = Category.new(category_params)
+
+    if @category.save
+      current_user.expenses.find_by(name: "dummy-expense-#{current_user.id}").categories << @category
       redirect_to categories_path, notice: 'Category was successfully created.'
     else
       render :new
@@ -27,6 +27,10 @@ class CategoriesController < ApplicationController
   end
 
   private
+
+  def set_category
+    @category = Category.find(params[:id])
+  end
 
   def category_params
     params.require(:category).permit(:name, :icon)
