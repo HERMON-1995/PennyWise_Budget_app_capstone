@@ -1,0 +1,21 @@
+<% if user_signed_in? %>
+  <%= content_tag :nav, class: "custom-nav" do %>
+    <%= content_tag :div, class: "custom-nav-content" do %>
+
+      <% if current_page?(new_category_path)%>
+        <%= link_to('<i class="fa fa-angle-left left-arrow"></i>'.html_safe, categories_path) %>
+        <%= content_tag :h2, "CATEGORY" %>
+        <%= content_tag :i, "", class: "fa fa-search fa-1x search" %>
+        <% end %>
+      <% end %>
+      <%= content_tag :div, class: "custom-nav-bottom" do %>
+        <%= link_to "Most recent", "#", class: "custom-nav-link" %>
+        <%= link_to "Most ancient", "#", class: "custom-nav-link ancient" %>
+    <% end %>
+    <% end %>
+    <% end %>
+
+<section>
+  <%= content_tag :h1, "New Category", class: "new-category-heading" %>
+  <%= render "form", category: @category %>
+</section>

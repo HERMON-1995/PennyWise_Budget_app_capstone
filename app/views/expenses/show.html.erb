@@ -1,0 +1,29 @@
+<% if user_signed_in? %>
+  <%= content_tag :nav, class: "custom-nav" do %>
+    <%= content_tag :div, class: "custom-nav-content" do %>
+      <% if current_page?(category_expense_path) %>
+        <%= link_to('<i class="fa fa-angle-left left-arrow"></i>'.html_safe, category_expenses_path) %>
+        <%= content_tag :h2, "TRANSACTIONS" %>
+        <%= content_tag :i, "", class: "fa fa-search fa-1x search" %>
+      <% end %>
+    <% end %>
+    <%= content_tag :div, class: "custom-nav-bottom" do %>
+      <%= link_to "Most recent", "#", class: "custom-nav-link" %>
+      <%= link_to "Most ancient", "#", class: "custom-nav-link ancient" %>
+  <% end %>
+  <% end %>
+<% end %>
+
+<%= content_tag :section, class: "expense-section" do %>
+  <%= content_tag :h1, @expense.name, class: "expense-heading" %>
+  <%= content_tag :ul, class: "expense-list" do %>
+    <%= content_tag :li, class: "expense-item" do %>
+      <%= content_tag :strong, "Amount:" %>
+      <%= number_to_currency(@expense.amount) %>
+    <% end %>
+    <%= content_tag :li, class: "expense-item" do %>
+      <%= content_tag :strong, "Categories:" %>
+      <%= @expense.categories.map(&:name).join(", ") %>
+    <% end %>
+  <% end %>
+<% end %>

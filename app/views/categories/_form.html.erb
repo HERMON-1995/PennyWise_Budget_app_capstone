@@ -1,0 +1,16 @@
+<div class="category-page">
+<%= form_with(model: category, url: categories_path, local: true) do |form| %>
+  <%= content_tag :div, class: "field" do %>
+    <%= form.label :name %>
+    <%= form.text_field :name, required: true, class: "input" %>
+  <% end %>
+  <%= content_tag :div, class: "field" do %>
+    <%= form.label :icon, class: "icon" %>
+  <%= form.select :icon, Category::ICONS, { include_blank: true }, { required: true, class: 'input' } %>
+  <%= content_tag(:i, "", class: "selected-icon") %>
+  <% end %>
+  <%= content_tag :div, class: "button-div create-cat-div" do %>
+    <%= form.submit "Create Category", class: "custom-button" %>
+  <% end %>
+<% end %>
+</div>
